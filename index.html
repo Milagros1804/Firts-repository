@@ -2,38 +2,76 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Lenguaje de Programación</title>
+<title>Lenguaje de Programación 1</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
 
-<div class="container py-5">
-  <div class="text-center mb-4">
-    <h1 class="fw-bold">Curso: Lenguaje de Programación</h1>
-    <p class="text-muted">Introducción a la programación en C / C++</p>
-  </div>
+<div class="container my-4">
+<h2 class="text-center mb-4">Lenguaje de Programación 1</h2>
 
-  <div class="card shadow">
-    <div class="card-body">
-      <h5 class="card-title">Lista de Estudiantes</h5>
-      <ul id="lista" class="list-group mt-3"></ul>
-    </div>
-  </div>
+<!-- DATOS EDITABLES -->
+<div class="card mb-3">
+<div class="card-body">
+<h5>Datos Personales (Editable)</h5>
+<input class="form-control my-1" id="nombre" value="Dina Milagros Delgado Quispe">
+<input class="form-control my-1" id="codigo" value="247092">
+<input class="form-control my-1" id="carrera" value="Ingeniería Estadística e Informática">
+<input class="form-control my-1" id="curso" value="Lenguaje de Programación 1">
+<input class="form-control my-1" id="docente" placeholder="Nombre del docente">
+<button class="btn btn-primary mt-2" onclick="actualizar()">Actualizar datos</button>
+</div>
+</div>
+
+<!-- DATOS MOSTRADOS -->
+<div class="card mb-4">
+<div class="card-body">
+<p><b>Nombre:</b> <span id="vNombre"></span></p>
+<p><b>Código:</b> <span id="vCodigo"></span></p>
+<p><b>Carrera:</b> <span id="vCarrera"></span></p>
+<p><b>Curso:</b> <span id="vCurso"></span></p>
+<p><b>Docente:</b> <span id="vDocente"></span></p>
+<p><b>Duración del curso:</b> 19 de enero – 6 de marzo</p>
+</div>
+</div>
+
+<!-- SEMANAS DEL CURSO -->
+<div class="row">
+<script>
+const semanas=[
+["Semana 1","19 de enero","Introducción al lenguaje C"],
+["Semana 2","26 de enero","Operadores y estructuras condicionales"],
+["Semana 3","2 de febrero","Estructuras repetitivas"],
+["Semana 4","9 de febrero","Funciones en C y C++"],
+["Semana 5","16 de febrero","Arreglos y cadenas"],
+["Semana 6","23 de febrero","Estructuras y punteros"],
+["Semana 7","2 de marzo","Repaso y evaluación final"]
+];
+
+document.write(semanas.map(s=>`
+<div class="col-md-6 mb-3">
+<div class="card">
+<div class="card-body">
+<h5>${s[0]}</h5>
+<p><b>Día 1:</b> ${s[1]}</p>
+<p><b>Contenido:</b> ${s[2]}</p>
+<p class="text-muted"><i>Ejercicios: se agregarán próximamente</i></p>
+</div>
+</div>
+</div>`).join(""));
+</script>
+</div>
 </div>
 
 <script>
-const estudiantes = [
-  "Dina Milagros Delgado Quispe",
-  "Juan Pérez",
-  "María López",
-  "Carlos Ramírez",
-  "Ana Torres"
-];
-
-const lista = document.getElementById("lista");
-estudiantes.forEach(e => {
-  lista.innerHTML += `<li class="list-group-item">${e}</li>`;
-});
+function actualizar(){
+vNombre.innerText=nombre.value;
+vCodigo.innerText=codigo.value;
+vCarrera.innerText=carrera.value;
+vCurso.innerText=curso.value;
+vDocente.innerText=docente.value||"Por asignar";
+}
+actualizar();
 </script>
 
 </body>
