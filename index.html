@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #2d3047;
@@ -31,7 +32,6 @@
             overflow-x: hidden;
         }
 
-        /* Navegación */
         nav {
             position: fixed;
             top: 0;
@@ -45,14 +45,8 @@
         }
 
         @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         nav .container {
@@ -98,15 +92,9 @@
             transition: width 0.3s ease;
         }
 
-        nav a:hover {
-            color: var(--secondary);
-        }
+        nav a:hover { color: var(--secondary); }
+        nav a:hover::after { width: 100%; }
 
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -153,14 +141,8 @@
         }
 
         @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         .hero-text h1 {
@@ -229,14 +211,8 @@
         }
 
         @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         .image-wrapper {
@@ -267,7 +243,6 @@
             border: 5px solid white;
         }
 
-        /* Secciones */
         section {
             padding: 6rem 0;
             position: relative;
@@ -297,7 +272,6 @@
             background: var(--secondary);
         }
 
-        /* About Section */
         #sobre-mi {
             background: white;
         }
@@ -315,7 +289,6 @@
             line-height: 1.8;
         }
 
-        /* Info Cards */
         .info-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -348,6 +321,7 @@
             justify-content: center;
             margin-bottom: 1.5rem;
             font-size: 1.8rem;
+            color: white;
         }
 
         .info-card h3 {
@@ -362,7 +336,6 @@
             font-size: 0.95rem;
         }
 
-        /* Skills Section */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -389,6 +362,7 @@
         .skill-icon {
             font-size: 2.5rem;
             margin-bottom: 0.8rem;
+            color: var(--secondary);
         }
 
         .skill-name {
@@ -397,7 +371,6 @@
             font-size: 0.95rem;
         }
 
-        /* Projects Section */
         #proyectos {
             background: white;
         }
@@ -414,6 +387,7 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
         }
 
         .project-card:hover {
@@ -464,7 +438,6 @@
             font-weight: 500;
         }
 
-        /* Contact Section */
         .contact-content {
             max-width: 600px;
             margin: 0 auto;
@@ -506,6 +479,10 @@
             font-size: 1.5rem;
         }
 
+        .contact-item-text {
+            text-align: left;
+        }
+
         .contact-item-text h4 {
             color: var(--primary);
             font-weight: 600;
@@ -543,7 +520,6 @@
             background: var(--secondary);
         }
 
-        /* Footer */
         footer {
             background: var(--primary);
             color: white;
@@ -555,7 +531,6 @@
             opacity: 0.8;
         }
 
-        /* Scroll Animation */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
@@ -567,38 +542,17 @@
             transform: translateY(0);
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
-
-            .image-wrapper {
-                width: 300px;
-                height: 300px;
-            }
-
-            nav ul {
-                gap: 1rem;
-            }
-
-            .hero-stats {
-                justify-content: center;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .image-wrapper { width: 300px; height: 300px; }
+            nav ul { gap: 1rem; }
+            .hero-stats { justify-content: center; }
+            .section-title { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Navegación -->
     <nav>
         <div class="container">
             <div class="logo">MDQ</div>
@@ -612,7 +566,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="inicio" class="hero">
         <div class="container">
             <div class="hero-content">
@@ -639,7 +592,6 @@
         </div>
     </section>
 
-    <!-- Sobre Mí -->
     <section id="sobre-mi">
         <div class="container">
             <h2 class="section-title">Sobre Mí</h2>
@@ -649,22 +601,22 @@
             </div>
             <div class="info-cards">
                 <div class="info-card fade-in">
-                    <div class="info-card-icon">🎓</div>
+                    <div class="info-card-icon"><i class="fas fa-graduation-cap"></i></div>
                     <h3>Escuela Profesional</h3>
                     <p>Ingeniería Estadística e Informática</p>
                 </div>
                 <div class="info-card fade-in">
-                    <div class="info-card-icon">📚</div>
+                    <div class="info-card-icon"><i class="fas fa-book"></i></div>
                     <h3>Curso Actual</h3>
                     <p>Lenguaje de Programación 1</p>
                 </div>
                 <div class="info-card fade-in">
-                    <div class="info-card-icon">👨‍🏫</div>
+                    <div class="info-card-icon"><i class="fas fa-chalkboard-teacher"></i></div>
                     <h3>Docente</h3>
                     <p>Fred Torres Cruz</p>
                 </div>
                 <div class="info-card fade-in">
-                    <div class="info-card-icon">📅</div>
+                    <div class="info-card-icon"><i class="fas fa-calendar-alt"></i></div>
                     <h3>Duración</h3>
                     <p>19 de enero – 6 de marzo</p>
                 </div>
@@ -672,46 +624,44 @@
         </div>
     </section>
 
-    <!-- Habilidades -->
     <section id="habilidades">
         <div class="container">
             <h2 class="section-title">Habilidades</h2>
             <div class="skills-grid">
                 <div class="skill-item fade-in">
-                    <div class="skill-icon">💻</div>
+                    <div class="skill-icon"><i class="fas fa-code"></i></div>
                     <div class="skill-name">Programación</div>
                 </div>
                 <div class="skill-item fade-in">
-                    <div class="skill-icon">📊</div>
+                    <div class="skill-icon"><i class="fas fa-chart-bar"></i></div>
                     <div class="skill-name">Estadística</div>
                 </div>
                 <div class="skill-item fade-in">
-                    <div class="skill-icon">🌐</div>
+                    <div class="skill-icon"><i class="fas fa-globe"></i></div>
                     <div class="skill-name">Desarrollo Web</div>
                 </div>
                 <div class="skill-item fade-in">
-                    <div class="skill-icon">📈</div>
+                    <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
                     <div class="skill-name">Análisis de Datos</div>
                 </div>
                 <div class="skill-item fade-in">
-                    <div class="skill-icon">🐍</div>
+                    <div class="skill-icon"><i class="fab fa-python"></i></div>
                     <div class="skill-name">Python</div>
                 </div>
                 <div class="skill-item fade-in">
-                    <div class="skill-icon">🗃️</div>
+                    <div class="skill-icon"><i class="fas fa-database"></i></div>
                     <div class="skill-name">Bases de Datos</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Proyectos -->
     <section id="proyectos">
         <div class="container">
             <h2 class="section-title">Proyectos</h2>
             <div class="projects-grid">
                 <div class="project-card fade-in">
-                    <div class="project-image">📝</div>
+                    <div class="project-image"><i class="fas fa-file-code"></i></div>
                     <div class="project-content">
                         <h3>Portafolio Personal</h3>
                         <p>Desarrollo de mi primer portafolio web utilizando HTML, CSS y JavaScript para mostrar mis habilidades y proyectos.</p>
@@ -723,7 +673,7 @@
                     </div>
                 </div>
                 <div class="project-card fade-in">
-                    <div class="project-image">🔢</div>
+                    <div class="project-image"><i class="fas fa-calculator"></i></div>
                     <div class="project-content">
                         <h3>Análisis Estadístico</h3>
                         <p>Proyecto de análisis de datos utilizando herramientas estadísticas para identificar patrones y tendencias.</p>
@@ -734,8 +684,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="project-card fade-in" onclick="window.location.href='ejercicios.html'" style="cursor: pointer;">
-                    <div class="project-image">🎯</div>
+                <div class="project-card fade-in" onclick="window.location.href='ejercicios.html'">
+                    <div class="project-image"><i class="fas fa-laptop-code"></i></div>
                     <div class="project-content">
                         <h3>Ejercicios de Programación</h3>
                         <p>Colección de ejercicios y prácticas del curso de Lenguaje de Programación 1 organizados por semanas.</p>
@@ -750,7 +700,6 @@
         </div>
     </section>
 
-    <!-- Contacto -->
     <section id="contacto">
         <div class="container">
             <h2 class="section-title">Contacto</h2>
@@ -758,21 +707,21 @@
                 <p class="subtitle">¿Tienes alguna pregunta o propuesta? No dudes en contactarme.</p>
                 <div class="contact-info">
                     <div class="contact-item fade-in">
-                        <div class="contact-item-icon">📧</div>
+                        <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
                         <div class="contact-item-text">
                             <h4>Email</h4>
-                            <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="255150084048444c4965404f404855494a0b464a48">[email&#160;protected]</a></p>
+                            <p>tu-email@ejemplo.com</p>
                         </div>
                     </div>
                     <div class="contact-item fade-in">
-                        <div class="contact-item-icon">🎓</div>
+                        <div class="contact-item-icon"><i class="fas fa-id-card"></i></div>
                         <div class="contact-item-text">
                             <h4>Universidad</h4>
                             <p>Código: 247092</p>
                         </div>
                     </div>
                     <div class="contact-item fade-in">
-                        <div class="contact-item-icon">📍</div>
+                        <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
                         <div class="contact-item-text">
                             <h4>Ubicación</h4>
                             <p>Perú</p>
@@ -780,54 +729,41 @@
                     </div>
                 </div>
                 <div class="social-links">
-                    <a href="#" class="social-link" title="GitHub">💻</a>
-                    <a href="#" class="social-link" title="LinkedIn">🔗</a>
-                    <a href="#" class="social-link" title="Email">✉️</a>
+                    <a href="#" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link" title="Email"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2026 Dina Milagros Delgado Quispe. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Animación al hacer scroll
+    <script>
         const fadeElements = document.querySelectorAll('.fade-in');
-        
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('visible');
             });
-        }, {
-            threshold: 0.1
-        });
+        }, { threshold: 0.1 });
+        fadeElements.forEach(element => observer.observe(element));
 
-        fadeElements.forEach(element => {
-            observer.observe(element);
-        });
-
-        // Smooth scroll para los enlaces de navegación
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
 
-        // Cambiar estilo del nav al hacer scroll
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('nav');
-            if (window.scrol
+            nav.style.boxShadow = window.scrollY > 100 ? '0 5px 30px rgba(0, 0, 0, 0.1)' : '0 2px 20px rgba(0, 0, 0, 0.05)';
+        });
+    </script>
+</body>
+</html>
