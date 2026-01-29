@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Work+Sans:wght@300;400;500;600&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #2d3047;
@@ -32,7 +33,6 @@
             background: var(--light);
         }
 
-        /* Navegación */
         nav {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -67,6 +67,9 @@
             border-radius: 25px;
             font-weight: 500;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .back-btn:hover {
@@ -74,7 +77,6 @@
             transform: translateX(-5px);
         }
 
-        /* Header */
         .header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
@@ -93,14 +95,12 @@
             opacity: 0.9;
         }
 
-        /* Container */
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
         }
 
-        /* Main Content */
         .main-content {
             display: grid;
             grid-template-columns: 280px 1fr;
@@ -109,7 +109,6 @@
             min-height: calc(100vh - 300px);
         }
 
-        /* Sidebar */
         .sidebar {
             position: sticky;
             top: 100px;
@@ -174,7 +173,6 @@
             font-weight: 500;
         }
 
-        /* Content Area */
         .content-area {
             background: white;
             border-radius: 15px;
@@ -192,35 +190,51 @@
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .week-header {
             margin-bottom: 2rem;
             border-bottom: 2px solid var(--light);
             padding-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .week-header h2 {
+        .week-header-left h2 {
             font-family: 'Playfair Display', serif;
             color: var(--primary);
             font-size: 2rem;
             margin-bottom: 0.5rem;
         }
 
-        .week-header p {
+        .week-header-left p {
             color: var(--text-light);
             font-size: 1.05rem;
         }
 
-        /* Exercises Grid */
+        .add-exercise-btn {
+            padding: 0.8rem 1.5rem;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .add-exercise-btn:hover {
+            background: var(--primary);
+            transform: scale(1.05);
+        }
+
         .exercises-grid {
             display: grid;
             gap: 1.5rem;
@@ -244,13 +258,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            cursor: pointer;
         }
 
         .exercise-title {
             display: flex;
             align-items: center;
             gap: 1rem;
+            flex: 1;
         }
 
         .exercise-icon {
@@ -285,7 +299,12 @@
             gap: 0.3rem;
         }
 
-        .toggle-btn {
+        .exercise-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .toggle-btn, .delete-btn {
             background: var(--secondary);
             color: white;
             border: none;
@@ -294,10 +313,20 @@
             cursor: pointer;
             font-weight: 500;
             transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .delete-btn {
+            background: #e74c3c;
         }
 
         .toggle-btn:hover {
             background: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .delete-btn:hover {
+            background: #c0392b;
             transform: scale(1.05);
         }
 
@@ -308,12 +337,13 @@
         }
 
         .exercise-content.active {
-            max-height: 2000px;
+            max-height: 3000px;
         }
 
-        .code-container {
+        .code-section {
             padding: 0;
             background: var(--code-bg);
+            margin-bottom: 0;
         }
 
         .code-header {
@@ -377,7 +407,150 @@
             line-height: 1.6;
         }
 
-        /* Empty State */
+        .output-section {
+            background: #1e1e1e;
+            padding: 1.5rem;
+            border-top: 2px solid #2d2d2d;
+        }
+
+        .output-header {
+            color: #4CAF50;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .output-content {
+            background: #0d0d0d;
+            padding: 1rem;
+            border-radius: 5px;
+            color: #f0f0f0;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--light);
+        }
+
+        .modal-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--light);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group textarea {
+            font-family: 'Fira Code', monospace;
+            min-height: 200px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
         .empty-state {
             text-align: center;
             padding: 4rem 2rem;
@@ -396,7 +569,6 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Footer */
         footer {
             background: var(--primary);
             color: white;
@@ -409,47 +581,47 @@
             opacity: 0.8;
         }
 
-        /* Responsive */
         @media (max-width: 968px) {
             .main-content {
                 grid-template-columns: 1fr;
             }
-
             .sidebar {
                 position: relative;
                 top: 0;
             }
-
             .header h1 {
                 font-size: 2rem;
+            }
+            .week-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navegación -->
     <nav>
         <div class="container">
             <div class="logo">Ejercicios de Programación</div>
-            <a href="index.html" class="back-btn">← Volver al Portafolio</a>
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Volver al Portafolio
+            </a>
         </div>
     </nav>
 
-    <!-- Header -->
     <div class="header">
         <div class="container">
-            <h1>💻 Lenguaje de Programación 1</h1>
+            <h1><i class="fas fa-laptop-code"></i> Lenguaje de Programación 1</h1>
             <p>Colección de ejercicios organizados por semana</p>
         </div>
     </div>
 
-    <!-- Main Content -->
     <div class="container">
         <div class="main-content">
-            <!-- Sidebar -->
             <aside class="sidebar">
                 <div class="week-list">
-                    <h3>📚 Semanas</h3>
+                    <h3><i class="fas fa-calendar-week"></i> Semanas</h3>
                     <div class="week-item active" data-week="1">
                         <div class="week-number">1</div>
                         <div class="week-name">Semana 1</div>
@@ -481,251 +653,239 @@
                 </div>
             </aside>
 
-            <!-- Content Area -->
             <div class="content-area">
-                <!-- Semana 1 -->
-                <div class="week-content active" data-week="1">
-                    <div class="week-header">
-                        <h2>Semana 1: Introducción a C/C++</h2>
-                        <p>Fundamentos básicos, variables y operadores</p>
-                    </div>
-                    <div class="exercises-grid">
-                        <!-- Ejercicio de ejemplo -->
-                        <div class="exercise-card">
-                            <div class="exercise-header">
-                                <div class="exercise-title">
-                                    <div class="exercise-icon">01</div>
-                                    <div class="exercise-info">
-                                        <h4>Hola Mundo</h4>
-                                        <div class="exercise-meta">
-                                            <span>📁 hola_mundo.c</span>
-                                            <span>📅 Enero 2026</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="toggle-btn" onclick="toggleCode(this)">Ver Código</button>
-                            </div>
-                            <div class="exercise-content">
-                                <div class="code-container">
-                                    <div class="code-header">
-                                        <div class="code-filename">
-                                            <span>📄</span>
-                                            <span>hola_mundo.c</span>
-                                            <span class="file-ext">.C</span>
-                                        </div>
-                                        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
-                                    </div>
-                                    <pre><code class="language-c">#include &lt;stdio.h&gt;
-
-int main() {
-    printf("¡Hola Mundo!\n");
-    printf("Mi nombre es Dina Milagros\n");
-    return 0;
-}</code></pre>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Ejercicio 2 ejemplo -->
-                        <div class="exercise-card">
-                            <div class="exercise-header">
-                                <div class="exercise-title">
-                                    <div class="exercise-icon">02</div>
-                                    <div class="exercise-info">
-                                        <h4>Suma de dos números</h4>
-                                        <div class="exercise-meta">
-                                            <span>📁 suma.cpp</span>
-                                            <span>📅 Enero 2026</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="toggle-btn" onclick="toggleCode(this)">Ver Código</button>
-                            </div>
-                            <div class="exercise-content">
-                                <div class="code-container">
-                                    <div class="code-header">
-                                        <div class="code-filename">
-                                            <span>📄</span>
-                                            <span>suma.cpp</span>
-                                            <span class="file-ext">.CPP</span>
-                                        </div>
-                                        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
-                                    </div>
-                                    <pre><code class="language-cpp">#include &lt;iostream&gt;
-using namespace std;
-
-int main() {
-    int num1, num2, suma;
-    
-    cout &lt;&lt; "Ingrese el primer número: ";
-    cin &gt;&gt; num1;
-    
-    cout &lt;&lt; "Ingrese el segundo número: ";
-    cin &gt;&gt; num2;
-    
-    suma = num1 + num2;
-    
-    cout &lt;&lt; "La suma es: " &lt;&lt; suma &lt;&lt; endl;
-    
-    return 0;
-}</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Semana 2 -->
-                <div class="week-content" data-week="2">
-                    <div class="week-header">
-                        <h2>Semana 2: Estructuras de Control</h2>
-                        <p>If-else, switch, bucles</p>
-                    </div>
-                    <div class="empty-state">
-                        <div class="empty-state-icon">📝</div>
-                        <h3>Próximamente</h3>
-                        <p>Agrega tus ejercicios de la semana 2 aquí</p>
-                    </div>
-                </div>
-
-                <!-- Semana 3 -->
-                <div class="week-content" data-week="3">
-                    <div class="week-header">
-                        <h2>Semana 3: Funciones</h2>
-                        <p>Definición y uso de funciones</p>
-                    </div>
-                    <div class="empty-state">
-                        <div class="empty-state-icon">📝</div>
-                        <h3>Próximamente</h3>
-                        <p>Agrega tus ejercicios de la semana 3 aquí</p>
-                    </div>
-                </div>
-
-                <!-- Semana 4 -->
-                <div class="week-content" data-week="4">
-                    <div class="week-header">
-                        <h2>Semana 4: Arreglos</h2>
-                        <p>Arrays unidimensionales y multidimensionales</p>
-                    </div>
-                    <div class="empty-state">
-                        <div class="empty-state-icon">📝</div>
-                        <h3>Próximamente</h3>
-                        <p>Agrega tus ejercicios de la semana 4 aquí</p>
-                    </div>
-                </div>
-
-                <!-- Semana 5 -->
-                <div class="week-content" data-week="5">
-                    <div class="week-header">
-                        <h2>Semana 5: Punteros</h2>
-                        <p>Introducción a punteros y memoria</p>
-                    </div>
-                    <div class="empty-state">
-                        <div class="empty-state-icon">📝</div>
-                        <h3>Próximamente</h3>
-                        <p>Agrega tus ejercicios de la semana 5 aquí</p>
-                    </div>
-                </div>
-
-                <!-- Semana 6 -->
-                <div class="week-content" data-week="6">
-                    <div class="week-header">
-                        <h2>Semana 6: Estructuras y Archivos</h2>
-                        <p>Structs y manejo de archivos</p>
-                    </div>
-                    <div class="empty-state">
-                        <div class="empty-state-icon">📝</div>
-                        <h3>Próximamente</h3>
-                        <p>Agrega tus ejercicios de la semana 6 aquí</p>
-                    </div>
-                </div>
-
-                <!-- Semana 7 -->
-                <div class="week-content" data-week="7">
-                    <div class="week-header">
-                        <h2>Semana 7: Proyecto Final</h2>
-                        <p>Integración de conceptos</p>
-                    </div>
-                    <div class="empty-state">
-                        <div class="empty-state-icon">📝</div>
-                        <h3>Próximamente</h3>
-                        <p>Agrega tu proyecto final aquí</p>
-                    </div>
-                </div>
+                <!-- Contenido dinámico se carga aquí -->
+                <div id="weekContentContainer"></div>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- Modal para agregar ejercicio -->
+    <div id="addExerciseModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-plus-circle"></i> Agregar Nuevo Ejercicio</h3>
+                <button class="close-modal" onclick="closeModal()">×</button>
+            </div>
+            <form id="exerciseForm">
+                <div class="form-group">
+                    <label>Título del Ejercicio *</label>
+                    <input type="text" id="exerciseTitle" required placeholder="Ej: Operadores If-Else">
+                </div>
+                <div class="form-group">
+                    <label>Nombre del Archivo *</label>
+                    <input type="text" id="exerciseFilename" required placeholder="Ej: if_else.c">
+                </div>
+                <div class="form-group">
+                    <label>Tipo de Archivo *</label>
+                    <select id="exerciseType" required>
+                        <option value="c">C (.c)</option>
+                        <option value="cpp">C++ (.cpp)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Código Fuente *</label>
+                    <textarea id="exerciseCode" required placeholder="Pega tu código aquí..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Salida del Programa *</label>
+                    <textarea id="exerciseOutput" required placeholder="Pega la salida de tu programa aquí..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-save"></i> Guardar Ejercicio
+                </button>
+            </form>
+        </div>
+    </div>
+
     <footer>
         <div class="container">
             <p>&copy; 2026 Dina Milagros Delgado Quispe - Ejercicios de Programación</p>
         </div>
     </footer>
 
-    <!-- Highlight.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/c.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cpp.min.js"></script>
 
     <script>
-        // Inicializar highlight.js
-        hljs.highlightAll();
+        let currentWeek = 1;
+        let exercises = JSON.parse(localStorage.getItem('exercises')) || {};
 
-        // Cambiar de semana
-        document.querySelectorAll('.week-item').forEach(item => {
-            item.addEventListener('click', function() {
-                const weekNum = this.getAttribute('data-week');
-                
-                // Actualizar sidebar
-                document.querySelectorAll('.week-item').forEach(w => w.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Mostrar contenido de la semana
-                document.querySelectorAll('.week-content').forEach(content => {
-                    content.classList.remove('active');
-                });
-                document.querySelector(`.week-content[data-week="${weekNum}"]`).classList.add('active');
-                
-                // Scroll to top
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
+        // Inicializar semanas vacías si no existen
+        for (let i = 1; i <= 7; i++) {
+            if (!exercises[i]) exercises[i] = [];
+        }
+
+        function saveExercises() {
+            localStorage.setItem('exercises', JSON.stringify(exercises));
+        }
+
+        function renderWeek(weekNum) {
+            const container = document.getElementById('weekContentContainer');
+            const weekExercises = exercises[weekNum] || [];
+            
+            container.innerHTML = `
+                <div class="week-content active" data-week="${weekNum}">
+                    <div class="week-header">
+                        <div class="week-header-left">
+                            <h2>Semana ${weekNum}</h2>
+                            <p>${weekExercises.length} ejercicio(s)</p>
+                        </div>
+                        <button class="add-exercise-btn" onclick="openModal(${weekNum})">
+                            <i class="fas fa-plus"></i> Agregar Ejercicio
+                        </button>
+                    </div>
+                    <div class="exercises-grid" id="exercisesGrid">
+                        ${weekExercises.length === 0 ? `
+                            <div class="empty-state">
+                                <div class="empty-state-icon"><i class="fas fa-code"></i></div>
+                                <h3>No hay ejercicios aún</h3>
+                                <p>Haz clic en "Agregar Ejercicio" para comenzar</p>
+                            </div>
+                        ` : weekExercises.map((ex, idx) => createExerciseCard(ex, idx)).join('')}
+                    </div>
+                </div>
+            `;
+            
+            hljs.highlightAll();
+        }
+
+        function createExerciseCard(exercise, index) {
+            const fileExt = exercise.type.toUpperCase();
+            return `
+                <div class="exercise-card">
+                    <div class="exercise-header">
+                        <div class="exercise-title">
+                            <div class="exercise-icon">${index + 1}</div>
+                            <div class="exercise-info">
+                                <h4>${exercise.title}</h4>
+                                <div class="exercise-meta">
+                                    <span><i class="fas fa-file-code"></i> ${exercise.filename}</span>
+                                    <span><i class="fas fa-calendar"></i> ${exercise.date}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="exercise-actions">
+                            <button class="toggle-btn" onclick="toggleCode(this)">Ver Código</button>
+                            <button class="delete-btn" onclick="deleteExercise(${currentWeek}, ${index})">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="exercise-content">
+                        <div class="code-section">
+                            <div class="code-header">
+                                <div class="code-filename">
+                                    <i class="fas fa-file-code"></i>
+                                    <span>${exercise.filename}</span>
+                                    <span class="file-ext">.${fileExt}</span>
+                                </div>
+                                <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                            </div>
+                            <pre><code class="language-${exercise.type}">${escapeHtml(exercise.code)}</code></pre>
+                        </div>
+                        <div class="output-section">
+                            <div class="output-header">
+                                <i class="fas fa-terminal"></i> Salida del Programa:
+                            </div>
+                            <div class="output-content">${escapeHtml(exercise.output)}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function openModal(weekNum) {
+            currentWeek = weekNum;
+            document.getElementById('addExerciseModal').classList.add('active');
+            document.getElementById('exerciseForm').reset();
+        }
+
+        function closeModal() {
+            document.getElementById('addExerciseModal').classList.remove('active');
+        }
+
+        document.getElementById('exerciseForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const newExercise = {
+                title: document.getElementById('exerciseTitle').value,
+                filename: document.getElementById('exerciseFilename').value,
+                type: document.getElementById('exerciseType').value,
+                code: document.getElementById('exerciseCode').value,
+                output: document.getElementById('exerciseOutput').value,
+                date: new Date().toLocaleDateString('es-ES')
+            };
+            
+            exercises[currentWeek].push(newExercise);
+            saveExercises();
+            renderWeek(currentWeek);
+            closeModal();
         });
 
-        // Toggle código
+        function deleteExercise(weekNum, index) {
+            if (confirm('¿Estás segura de eliminar este ejercicio?')) {
+                exercises[weekNum].splice(index, 1);
+                saveExercises();
+                renderWeek(weekNum);
+            }
+        }
+
         function toggleCode(button) {
             const card = button.closest('.exercise-card');
             const content = card.querySelector('.exercise-content');
             
             content.classList.toggle('active');
+            button.textContent = content.classList.contains('active') ? 'Ocultar Código' : 'Ver Código';
             
             if (content.classList.contains('active')) {
-                button.textContent = 'Ocultar Código';
-                // Re-highlight el código cuando se muestra
                 const codeBlock = content.querySelector('code');
-                if (codeBlock) {
-                    hljs.highlightElement(codeBlock);
-                }
-            } else {
-                button.textContent = 'Ver Código';
+                if (codeBlock) hljs.highlightElement(codeBlock);
             }
         }
 
-        // Copiar código
         function copyCode(button) {
-            const codeContainer = button.closest('.code-container');
+            const codeContainer = button.closest('.code-section');
             const code = codeContainer.querySelector('code').textContent;
             
             navigator.clipboard.writeText(code).then(() => {
                 button.textContent = '✓ Copiado';
                 button.classList.add('copied');
-                
                 setTimeout(() => {
                     button.textContent = 'Copiar';
                     button.classList.remove('copied');
                 }, 2000);
             });
         }
+
+        // Cambiar de semana
+        document.querySelectorAll('.week-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const weekNum = parseInt(this.getAttribute('data-week'));
+                currentWeek = weekNum;
+                
+                document.querySelectorAll('.week-item').forEach(w => w.classList.remove('active'));
+                this.classList.add('active');
+                
+                renderWeek(weekNum);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        // Cerrar modal al hacer clic fuera
+        document.getElementById('addExerciseModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // Inicializar
+        renderWeek(1);
     </script>
 </body>
 </html>
