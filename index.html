@@ -3,749 +3,274 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dina Milagros Delgado Quispe - Portafolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Portafolio - Milagros</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #2d3047;
-            --secondary: #419d78;
-            --accent: #e0a458;
-            --light: #f7f9fb;
-            --text: #1a1a2e;
-            --text-light: #6b7280;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Work Sans', sans-serif;
-            color: var(--text);
-            line-height: 1.7;
-            background: var(--light);
-            overflow-x: hidden;
-        }
-
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1.2rem 0;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
-            animation: slideDown 0.6s ease-out;
-        }
-
-        @keyframes slideDown {
-            from { transform: translateY(-100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        nav .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav .logo {
-            font-family: 'Playfair Display', serif;
-            font-weight: 900;
-            font-size: 1.5rem;
-            color: var(--primary);
-            letter-spacing: -0.5px;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--secondary);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover { color: var(--secondary); }
-        nav a:hover::after { width: 100%; }
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(65, 157, 120, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: float 20s infinite ease-in-out;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(-50px, -50px) rotate(180deg); }
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-text {
-            animation: fadeInLeft 1s ease-out;
-        }
-
-        @keyframes fadeInLeft {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        .hero-text h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: var(--primary);
-            line-height: 1.1;
-            margin-bottom: 1rem;
-            letter-spacing: -1px;
-        }
-
-        .hero-text .highlight {
-            color: var(--secondary);
-            position: relative;
-            display: inline-block;
-        }
-
-        .hero-text .highlight::after {
-            content: '';
-            position: absolute;
-            bottom: 10px;
-            left: 0;
-            width: 100%;
-            height: 15px;
-            background: rgba(65, 157, 120, 0.2);
-            z-index: -1;
-            transform: skew(-12deg);
-        }
-
-        .subtitle {
-            font-size: 1.3rem;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-            font-weight: 300;
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .stat-item {
-            text-align: left;
-        }
-
-        .stat-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--accent);
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .hero-image {
-            position: relative;
-            animation: fadeInRight 1s ease-out;
-        }
-
-        @keyframes fadeInRight {
-            from { opacity: 0; transform: translateX(50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        .image-wrapper {
-            position: relative;
-            width: 400px;
-            height: 400px;
-            margin: 0 auto;
-        }
-
-        .image-wrapper::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: -20px;
-            right: 20px;
-            bottom: 20px;
-            border: 3px solid var(--accent);
-            border-radius: 50%;
-            z-index: -1;
-        }
-
-        .image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-            border: 5px solid white;
-        }
-
-        section {
-            padding: 6rem 0;
-            position: relative;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--primary);
-            margin-bottom: 3rem;
-            text-align: center;
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: var(--secondary);
-        }
-
-        #sobre-mi {
-            background: white;
-        }
-
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .about-content p {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        .info-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .info-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .info-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-            border-color: var(--secondary);
-        }
-
-        .info-card-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--secondary), var(--accent));
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-            color: white;
-        }
-
-        .info-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .info-card p {
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1.5rem;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .skill-item {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
-            transition: transform 0.3s ease;
-            border: 2px solid var(--light);
-        }
-
-        .skill-item:hover {
-            transform: scale(1.05);
-            border-color: var(--secondary);
-        }
-
-        .skill-icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.8rem;
-            color: var(--secondary);
-        }
-
-        .skill-name {
-            font-weight: 600;
-            color: var(--primary);
-            font-size: 0.95rem;
-        }
-
-        #proyectos {
-            background: white;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .project-card {
-            background: var(--light);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-        }
-
-        .project-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, var(--secondary), var(--accent));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: white;
-        }
-
-        .project-content {
-            padding: 2rem;
-        }
-
-        .project-content h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .project-content p {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .project-tags {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .tag {
-            padding: 0.4rem 1rem;
-            background: white;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            color: var(--secondary);
-            font-weight: 500;
-        }
-
-        .contact-content {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
-            transition: transform 0.3s ease;
-        }
-
-        .contact-item:hover {
-            transform: translateX(10px);
-        }
-
-        .contact-item-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--secondary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-        }
-
-        .contact-item-text {
-            text-align: left;
-        }
-
-        .contact-item-text h4 {
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-        }
-
-        .contact-item-text p {
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-
-        .social-link {
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            font-size: 1.5rem;
-            transition: transform 0.3s ease, background 0.3s ease;
-        }
-
-        .social-link:hover {
-            transform: scale(1.1) rotate(5deg);
-            background: var(--secondary);
-        }
-
-        footer {
-            background: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        footer p {
-            opacity: 0.8;
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @media (max-width: 768px) {
-            .hero-content { grid-template-columns: 1fr; text-align: center; }
-            .hero-text h1 { font-size: 2.5rem; }
-            .image-wrapper { width: 300px; height: 300px; }
-            nav ul { gap: 1rem; }
-            .hero-stats { justify-content: center; }
-            .section-title { font-size: 2rem; }
-        }
-    </style>
 </head>
 <body>
-    <nav>
-        <div class="container">
-            <div class="logo">MDQ</div>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#sobre-mi">Sobre Mí</a></li>
-                <li><a href="#habilidades">Habilidades</a></li>
-                <li><a href="#proyectos">Proyectos</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </div>
-    </nav>
+    <!-- Header con navegación -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h2>Milagros</h2>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#sobre-mi">Sobre Mí</a></li>
+                    <li><a href="#proyectos">Proyectos</a></li>
+                    <li><a href="#habilidades">Habilidades</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
 
+    <!-- Sección Inicio -->
     <section id="inicio" class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Hola, soy<br><span class="highlight">Dina Milagros</span><br>Delgado Quispe</h1>
-                    <p class="subtitle">Estudiante de Ingeniería Estadística e Informática</p>
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">247092</span>
-                            <span class="stat-label">Código</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">2026</span>
-                            <span class="stat-label">Año Actual</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <div class="image-wrapper">
-                        <img src="img/foto.jpg" alt="Dina Milagros Delgado Quispe">
-                    </div>
+                <h1>¡Hola! Soy <span class="highlight">Milagros</span></h1>
+                <p class="subtitle">Estudiante de Programación</p>
+                <p class="description">Apasionada por la tecnología y el desarrollo de software</p>
+                <div class="cta-buttons">
+                    <a href="#proyectos" class="btn btn-primary">Ver Proyectos</a>
+                    <a href="#contacto" class="btn btn-secondary">Contacto</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="sobre-mi">
+    <!-- Sección Sobre Mí -->
+    <section id="sobre-mi" class="about">
         <div class="container">
             <h2 class="section-title">Sobre Mí</h2>
             <div class="about-content">
-                <p>Soy estudiante de <strong>Ingeniería Estadística e Informática</strong>, apasionada por el análisis de datos, la programación y el desarrollo de soluciones tecnológicas innovadoras.</p>
-                <p>Actualmente cursando <strong>Lenguaje de Programación 1</strong> con el profesor Fred Torres Cruz, donde estoy desarrollando habilidades fundamentales en programación y pensamiento computacional.</p>
-            </div>
-            <div class="info-cards">
-                <div class="info-card fade-in">
-                    <div class="info-card-icon"><i class="fas fa-graduation-cap"></i></div>
-                    <h3>Escuela Profesional</h3>
-                    <p>Ingeniería Estadística e Informática</p>
-                </div>
-                <div class="info-card fade-in">
-                    <div class="info-card-icon"><i class="fas fa-book"></i></div>
-                    <h3>Curso Actual</h3>
-                    <p>Lenguaje de Programación 1</p>
-                </div>
-                <div class="info-card fade-in">
-                    <div class="info-card-icon"><i class="fas fa-chalkboard-teacher"></i></div>
-                    <h3>Docente</h3>
-                    <p>Fred Torres Cruz</p>
-                </div>
-                <div class="info-card fade-in">
-                    <div class="info-card-icon"><i class="fas fa-calendar-alt"></i></div>
-                    <h3>Duración</h3>
-                    <p>19 de enero – 6 de marzo</p>
+                <div class="about-text">
+                    <p>Soy estudiante de programación con enfoque en C y C++. Me apasiona resolver problemas mediante código y estoy constantemente aprendiendo nuevas tecnologías y mejorando mis habilidades.</p>
+                    <p>En este portafolio encontrarás mis proyectos, ejercicios y trabajos desarrollados durante mi proceso de aprendizaje.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="habilidades">
+    <!-- Sección Proyectos -->
+    <section id="proyectos" class="projects">
+        <div class="container">
+            <h2 class="section-title">Proyectos</h2>
+            
+            <!-- Subsección: Libro -->
+            <div class="project-subsection">
+                <div class="subsection-header">
+                    <h3><i class="fas fa-book"></i> Libro</h3>
+                    <button class="btn btn-add" onclick="showUploadBookModal()">
+                        <i class="fas fa-plus"></i> Subir Libro
+                    </button>
+                </div>
+                <div id="book-container" class="book-container">
+                    <!-- El libro se cargará aquí -->
+                </div>
+            </div>
+
+            <!-- Subsección: Actividades -->
+            <div class="project-subsection">
+                <div class="subsection-header">
+                    <h3><i class="fas fa-code"></i> Actividades de Programación</h3>
+                    <div class="activity-buttons">
+                        <button class="btn btn-add" onclick="showAddCodeModal()">
+                            <i class="fas fa-plus"></i> Agregar Código
+                        </button>
+                        <button class="btn btn-add" onclick="showUploadExercisesModal()">
+                            <i class="fas fa-file-pdf"></i> Subir PDF de Ejercicios
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- PDF de todos los ejercicios -->
+                <div id="exercises-pdf-container" class="exercises-pdf-container">
+                    <!-- El PDF de ejercicios se mostrará aquí -->
+                </div>
+
+                <!-- Filtros -->
+                <div class="filters">
+                    <button class="filter-btn active" onclick="filterActivities('all')">Todos</button>
+                    <button class="filter-btn" onclick="filterActivities('c')">C</button>
+                    <button class="filter-btn" onclick="filterActivities('cpp')">C++</button>
+                </div>
+
+                <!-- Lista de códigos -->
+                <div id="activities-container" class="activities-grid">
+                    <!-- Los códigos se cargarán aquí dinámicamente -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Habilidades -->
+    <section id="habilidades" class="skills">
         <div class="container">
             <h2 class="section-title">Habilidades</h2>
             <div class="skills-grid">
-                <div class="skill-item fade-in">
-                    <div class="skill-icon"><i class="fas fa-code"></i></div>
-                    <div class="skill-name">Programación</div>
-                </div>
-                <div class="skill-item fade-in">
-                    <div class="skill-icon"><i class="fas fa-chart-bar"></i></div>
-                    <div class="skill-name">Estadística</div>
-                </div>
-                <div class="skill-item fade-in">
-                    <div class="skill-icon"><i class="fas fa-globe"></i></div>
-                    <div class="skill-name">Desarrollo Web</div>
-                </div>
-                <div class="skill-item fade-in">
-                    <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
-                    <div class="skill-name">Análisis de Datos</div>
-                </div>
-                <div class="skill-item fade-in">
-                    <div class="skill-icon"><i class="fab fa-python"></i></div>
-                    <div class="skill-name">Python</div>
-                </div>
-                <div class="skill-item fade-in">
-                    <div class="skill-icon"><i class="fas fa-database"></i></div>
-                    <div class="skill-name">Bases de Datos</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="proyectos">
-        <div class="container">
-            <h2 class="section-title">Proyectos</h2>
-            <div class="projects-grid">
-                <div class="project-card fade-in">
-                    <div class="project-image"><i class="fas fa-file-code"></i></div>
-                    <div class="project-content">
-                        <h3>Portafolio Personal</h3>
-                        <p>Desarrollo de mi portafolio web profesional. Aquí subo semana por semana mis guías y resúmenes del curso.</p>
-                        <div class="project-tags">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">JavaScript</span>
-                        </div>
+                <div class="skill-card">
+                    <i class="fab fa-cuttlefish"></i>
+                    <h3>C</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%"></div>
                     </div>
                 </div>
-                <div class="project-card fade-in" onclick="window.location.href='ejercicios.html'">
-                    <div class="project-image"><i class="fas fa-laptop-code"></i></div>
-                    <div class="project-content">
-                        <h3>Ejercicios de Programación</h3>
-                        <p>Colección completa de ejercicios del curso de Lenguaje de Programación 1 organizados por 7 semanas con código y salidas.</p>
-                        <div class="project-tags">
-                            <span class="tag">C</span>
-                            <span class="tag">C++</span>
-                            <span class="tag">7 Semanas</span>
-                        </div>
+                <div class="skill-card">
+                    <i class="fas fa-code"></i>
+                    <h3>C++</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 75%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-html5"></i>
+                    <h3>HTML/CSS</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 70%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-js"></i>
+                    <h3>JavaScript</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 65%"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contacto">
+    <!-- Sección Contacto -->
+    <section id="contacto" class="contact">
         <div class="container">
             <h2 class="section-title">Contacto</h2>
             <div class="contact-content">
-                <p class="subtitle">¿Tienes alguna pregunta o propuesta? No dudes en contactarme.</p>
                 <div class="contact-info">
-                    <div class="contact-item fade-in">
-                        <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
-                        <div class="contact-item-text">
-                            <h4>Email</h4>
-                            <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dbafaef6beb6bab2b79bbeb1beb6abb7b4f5b8b4b6">[email&#160;protected]</a></p>
-                        </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>milagros@ejemplo.com</span>
                     </div>
-                    <div class="contact-item fade-in">
-                        <div class="contact-item-icon"><i class="fas fa-id-card"></i></div>
-                        <div class="contact-item-text">
-                            <h4>Universidad</h4>
-                            <p>Código: 247092</p>
-                        </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <a href="https://github.com/Milagros1804" target="_blank">github.com/Milagros1804</a>
                     </div>
-                    <div class="contact-item fade-in">
-                        <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <div class="contact-item-text">
-                            <h4>Ubicación</h4>
-                            <p>Perú</p>
-                        </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
                     </div>
-                </div>
-                <div class="social-links">
-                    <a href="#" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="#" class="social-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="social-link" title="Email"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 Dina Milagros Delgado Quispe. Todos los derechos reservados.</p>
+            <p>&copy; 2026 Milagros. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        const fadeElements = document.querySelectorAll('.fade-in');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, { threshold: 0.1 });
-        fadeElements.forEach(element => observer.observe(element));
+    <!-- Modal para subir libro -->
+    <div id="uploadBookModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeUploadBookModal()">&times;</span>
+            <h3>Subir Libro (PDF)</h3>
+            <form id="uploadBookForm">
+                <div class="form-group">
+                    <label>Título del Libro:</label>
+                    <input type="text" id="bookTitle" required>
+                </div>
+                <div class="form-group">
+                    <label>Descripción:</label>
+                    <textarea id="bookDescription" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Archivo PDF:</label>
+                    <input type="file" id="bookFile" accept=".pdf" required>
+                </div>
+                <div class="modal-buttons">
+                    <button type="submit" class="btn btn-primary">Subir</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeUploadBookModal()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-        });
+    <!-- Modal para agregar código -->
+    <div id="addCodeModal" class="modal">
+        <div class="modal-content modal-large">
+            <span class="close" onclick="closeAddCodeModal()">&times;</span>
+            <h3>Agregar Código</h3>
+            <form id="addCodeForm">
+                <div class="form-group">
+                    <label>Título del Ejercicio:</label>
+                    <input type="text" id="codeTitle" required>
+                </div>
+                <div class="form-group">
+                    <label>Descripción:</label>
+                    <textarea id="codeDescription" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Lenguaje:</label>
+                    <select id="codeLanguage" required>
+                        <option value="c">C</option>
+                        <option value="cpp">C++</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Código Fuente:</label>
+                    <textarea id="codeSource" rows="15" required placeholder="Pega tu código aquí..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Salida del Programa:</label>
+                    <textarea id="codeOutput" rows="8" required placeholder="Pega la salida de tu programa aquí..."></textarea>
+                </div>
+                <div class="modal-buttons">
+                    <button type="submit" class="btn btn-primary">Agregar</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeAddCodeModal()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-        window.addEventListener('scroll'
+    <!-- Modal para subir PDF de ejercicios -->
+    <div id="uploadExercisesModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeUploadExercisesModal()">&times;</span>
+            <h3>Subir PDF de Ejercicios</h3>
+            <form id="uploadExercisesForm">
+                <div class="form-group">
+                    <label>Título:</label>
+                    <input type="text" id="exercisesTitle" value="Todos los Ejercicios" required>
+                </div>
+                <div class="form-group">
+                    <label>Archivo PDF:</label>
+                    <input type="file" id="exercisesFile" accept=".pdf" required>
+                </div>
+                <div class="modal-buttons">
+                    <button type="submit" class="btn btn-primary">Subir</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeUploadExercisesModal()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para ver detalles del código -->
+    <div id="viewCodeModal" class="modal">
+        <div class="modal-content modal-large">
+            <span class="close" onclick="closeViewCodeModal()">&times;</span>
+            <div id="viewCodeContent"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
